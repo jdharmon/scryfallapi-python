@@ -19,8 +19,8 @@ class CardFace(Model):
     :type oracle_text: str
     :param mana_cost:
     :type mana_cost: str
-    :param colors: Possible values include: 'W', 'U', 'B', 'R', 'G'
-    :type colors: str or ~scryfall.models.Colors
+    :param colors:
+    :type colors: list[str or ~scryfall.models.Colors]
     :param color_indicator: Possible values include: 'W', 'U', 'B', 'R', 'G'
     :type color_indicator: str or ~scryfall.models.Colors
     :param power:
@@ -42,7 +42,7 @@ class CardFace(Model):
         'type_line': {'key': 'type_line', 'type': 'str'},
         'oracle_text': {'key': 'oracle_text', 'type': 'str'},
         'mana_cost': {'key': 'mana_cost', 'type': 'str'},
-        'colors': {'key': 'colors', 'type': 'Colors'},
+        'colors': {'key': 'colors', 'type': '[Colors]'},
         'color_indicator': {'key': 'color_indicator', 'type': 'Colors'},
         'power': {'key': 'power', 'type': 'str'},
         'toughness': {'key': 'toughness', 'type': 'str'},
