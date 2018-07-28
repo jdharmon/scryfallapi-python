@@ -12,6 +12,7 @@ class Layouts(Enum):
 
     normal = "normal"
     split = "split"
+    flip = "flip"
     transform = "transform"
     meld = "meld"
     leveler = "leveler"
@@ -39,6 +40,8 @@ class LegalStatus(Enum):
 
     legal = "legal"
     not_legal = "not_legal"
+    restricted = "restricted"
+    banned = "banned"
 
 
 class Rarity(Enum):

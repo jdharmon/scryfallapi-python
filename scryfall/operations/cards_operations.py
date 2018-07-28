@@ -411,6 +411,56 @@ class CardsOperations(object):
         return deserialized
     get_by_mtgo_id.metadata = {'url': '/cards/mtgo/{id}'}
 
+    def get_by_arena_id(
+            self, id, custom_headers=None, raw=False, **operation_config):
+        """
+
+        :param id:
+        :type id: int
+        :param dict custom_headers: headers that will be added to the request
+        :param bool raw: returns the direct response alongside the
+         deserialized response
+        :param operation_config: :ref:`Operation configuration
+         overrides<msrest:optionsforoperations>`.
+        :return: Card or ClientRawResponse if raw=true
+        :rtype: ~scryfall.models.Card or ~msrest.pipeline.ClientRawResponse
+        :raises: :class:`ErrorException<scryfall.models.ErrorException>`
+        """
+        # Construct URL
+        url = self.get_by_arena_id.metadata['url']
+        path_format_arguments = {
+            'id': self._serialize.url("id", id, 'int')
+        }
+        url = self._client.format_url(url, **path_format_arguments)
+
+        # Construct parameters
+        query_parameters = {}
+
+        # Construct headers
+        header_parameters = {}
+        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        if custom_headers:
+            header_parameters.update(custom_headers)
+
+        # Construct and send request
+        request = self._client.get(url, query_parameters)
+        response = self._client.send(request, header_parameters, stream=False, **operation_config)
+
+        if response.status_code not in [200]:
+            raise models.ErrorException(self._deserialize, response)
+
+        deserialized = None
+
+        if response.status_code == 200:
+            deserialized = self._deserialize('Card', response)
+
+        if raw:
+            client_raw_response = ClientRawResponse(deserialized, response)
+            return client_raw_response
+
+        return deserialized
+    get_by_arena_id.metadata = {'url': '/cards/arena/{id}'}
+
     def get_by_code_by_number(
             self, code, number, custom_headers=None, raw=False, **operation_config):
         """

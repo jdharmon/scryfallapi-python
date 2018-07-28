@@ -19,6 +19,8 @@ class Card(Model):
     :type multiverse_ids: list[int]
     :param mtgo_id:
     :type mtgo_id: int
+    :param arena_id:
+    :type arena_id: int
     :param mtgo_foil_id:
     :type mtgo_foil_id: int
     :param uri:
@@ -31,9 +33,9 @@ class Card(Model):
     :type rulings_uri: str
     :param name:
     :type name: str
-    :param layout: Possible values include: 'normal', 'split', 'transform',
-     'meld', 'leveler', 'saga', 'planar', 'scheme', 'vanguard', 'token',
-     'double_faced_token', 'emblem', 'augment', 'host'
+    :param layout: Possible values include: 'normal', 'split', 'flip',
+     'transform', 'meld', 'leveler', 'saga', 'planar', 'scheme', 'vanguard',
+     'token', 'double_faced_token', 'emblem', 'augment', 'host'
     :type layout: str or ~scryfall.models.Layouts
     :param cmc:
     :type cmc: float
@@ -60,7 +62,7 @@ class Card(Model):
     :param color_identity:
     :type color_identity: list[str or ~scryfall.models.Colors]
     :param all_parts:
-    :type all_parts: ~scryfall.models.RelatedCards
+    :type all_parts: list[~scryfall.models.RelatedCards]
     :param card_faces:
     :type card_faces: list[~scryfall.models.CardFace]
     :param legalities:
@@ -126,6 +128,7 @@ class Card(Model):
         'oracle_id': {'key': 'oracle_id', 'type': 'str'},
         'multiverse_ids': {'key': 'multiverse_ids', 'type': '[int]'},
         'mtgo_id': {'key': 'mtgo_id', 'type': 'int'},
+        'arena_id': {'key': 'arena_id', 'type': 'int'},
         'mtgo_foil_id': {'key': 'mtgo_foil_id', 'type': 'int'},
         'uri': {'key': 'uri', 'type': 'str'},
         'scryfall_uri': {'key': 'scryfall_uri', 'type': 'str'},
@@ -145,7 +148,7 @@ class Card(Model):
         'colors': {'key': 'colors', 'type': '[Colors]'},
         'color_indicator': {'key': 'color_indicator', 'type': '[Colors]'},
         'color_identity': {'key': 'color_identity', 'type': '[Colors]'},
-        'all_parts': {'key': 'all_parts', 'type': 'RelatedCards'},
+        'all_parts': {'key': 'all_parts', 'type': '[RelatedCards]'},
         'card_faces': {'key': 'card_faces', 'type': '[CardFace]'},
         'legalities': {'key': 'legalities', 'type': 'Legality'},
         'reserved': {'key': 'reserved', 'type': 'bool'},
@@ -176,12 +179,13 @@ class Card(Model):
         'related_uris': {'key': 'related_uris', 'type': '{str}'},
     }
 
-    def __init__(self, id=None, oracle_id=None, multiverse_ids=None, mtgo_id=None, mtgo_foil_id=None, uri=None, scryfall_uri=None, prints_search_uri=None, rulings_uri=None, name=None, layout=None, cmc=None, type_line=None, oracle_text=None, mana_cost=None, power=None, toughness=None, loyalty=None, life_modifier=None, hand_modifier=None, colors=None, color_indicator=None, color_identity=None, all_parts=None, card_faces=None, legalities=None, reserved=None, edhrec_rank=None, set=None, set_name=None, collector_number=None, set_search_uri=None, scryfall_set_uri=None, image_uris=None, highres_image=None, reprint=None, digital=None, rarity=None, flavor_text=None, artist=None, illustration_id=None, frame=None, full_art=None, watermark=None, border_color=None, story_spotlight_number=None, story_spotlight_uri=None, timeshifted=None, colorshifted=None, futureshifted=None, purchase_uris=None, related_uris=None):
+    def __init__(self, id=None, oracle_id=None, multiverse_ids=None, mtgo_id=None, arena_id=None, mtgo_foil_id=None, uri=None, scryfall_uri=None, prints_search_uri=None, rulings_uri=None, name=None, layout=None, cmc=None, type_line=None, oracle_text=None, mana_cost=None, power=None, toughness=None, loyalty=None, life_modifier=None, hand_modifier=None, colors=None, color_indicator=None, color_identity=None, all_parts=None, card_faces=None, legalities=None, reserved=None, edhrec_rank=None, set=None, set_name=None, collector_number=None, set_search_uri=None, scryfall_set_uri=None, image_uris=None, highres_image=None, reprint=None, digital=None, rarity=None, flavor_text=None, artist=None, illustration_id=None, frame=None, full_art=None, watermark=None, border_color=None, story_spotlight_number=None, story_spotlight_uri=None, timeshifted=None, colorshifted=None, futureshifted=None, purchase_uris=None, related_uris=None):
         super(Card, self).__init__()
         self.id = id
         self.oracle_id = oracle_id
         self.multiverse_ids = multiverse_ids
         self.mtgo_id = mtgo_id
+        self.arena_id = arena_id
         self.mtgo_foil_id = mtgo_foil_id
         self.uri = uri
         self.scryfall_uri = scryfall_uri

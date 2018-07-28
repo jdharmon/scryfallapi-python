@@ -11,29 +11,41 @@ from msrest.serialization import Model
 class Legality(Model):
     """Legality.
 
-    :param standard: Possible values include: 'legal', 'not_legal'
+    :param standard: Possible values include: 'legal', 'not_legal',
+     'restricted', 'banned'
     :type standard: str or ~scryfall.models.LegalStatus
-    :param future: Possible values include: 'legal', 'not_legal'
+    :param future: Possible values include: 'legal', 'not_legal',
+     'restricted', 'banned'
     :type future: str or ~scryfall.models.LegalStatus
-    :param frontier: Possible values include: 'legal', 'not_legal'
+    :param frontier: Possible values include: 'legal', 'not_legal',
+     'restricted', 'banned'
     :type frontier: str or ~scryfall.models.LegalStatus
-    :param modern: Possible values include: 'legal', 'not_legal'
+    :param modern: Possible values include: 'legal', 'not_legal',
+     'restricted', 'banned'
     :type modern: str or ~scryfall.models.LegalStatus
-    :param legacy: Possible values include: 'legal', 'not_legal'
+    :param legacy: Possible values include: 'legal', 'not_legal',
+     'restricted', 'banned'
     :type legacy: str or ~scryfall.models.LegalStatus
-    :param pauper: Possible values include: 'legal', 'not_legal'
+    :param pauper: Possible values include: 'legal', 'not_legal',
+     'restricted', 'banned'
     :type pauper: str or ~scryfall.models.LegalStatus
-    :param vintage: Possible values include: 'legal', 'not_legal'
+    :param vintage: Possible values include: 'legal', 'not_legal',
+     'restricted', 'banned'
     :type vintage: str or ~scryfall.models.LegalStatus
-    :param penny: Possible values include: 'legal', 'not_legal'
+    :param penny: Possible values include: 'legal', 'not_legal', 'restricted',
+     'banned'
     :type penny: str or ~scryfall.models.LegalStatus
-    :param commander: Possible values include: 'legal', 'not_legal'
+    :param commander: Possible values include: 'legal', 'not_legal',
+     'restricted', 'banned'
     :type commander: str or ~scryfall.models.LegalStatus
-    :param onev_one: Possible values include: 'legal', 'not_legal'
+    :param onev_one: Possible values include: 'legal', 'not_legal',
+     'restricted', 'banned'
     :type onev_one: str or ~scryfall.models.LegalStatus
-    :param duel: Possible values include: 'legal', 'not_legal'
+    :param duel: Possible values include: 'legal', 'not_legal', 'restricted',
+     'banned'
     :type duel: str or ~scryfall.models.LegalStatus
-    :param brawl: Possible values include: 'legal', 'not_legal'
+    :param brawl: Possible values include: 'legal', 'not_legal', 'restricted',
+     'banned'
     :type brawl: str or ~scryfall.models.LegalStatus
     """
 
