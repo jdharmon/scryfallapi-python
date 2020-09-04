@@ -29,55 +29,6 @@ class CardsOperations(object):
 
         self.config = config
 
-    def get_all(
-            self, page=None, custom_headers=None, raw=False, **operation_config):
-        """
-
-        :param page:
-        :type page: int
-        :param dict custom_headers: headers that will be added to the request
-        :param bool raw: returns the direct response alongside the
-         deserialized response
-        :param operation_config: :ref:`Operation configuration
-         overrides<msrest:optionsforoperations>`.
-        :return: CardList or ClientRawResponse if raw=true
-        :rtype: ~scryfall.models.CardList or
-         ~msrest.pipeline.ClientRawResponse
-        :raises: :class:`ErrorException<scryfall.models.ErrorException>`
-        """
-        # Construct URL
-        url = self.get_all.metadata['url']
-
-        # Construct parameters
-        query_parameters = {}
-        if page is not None:
-            query_parameters['page'] = self._serialize.query("page", page, 'int')
-
-        # Construct headers
-        header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
-        if custom_headers:
-            header_parameters.update(custom_headers)
-
-        # Construct and send request
-        request = self._client.get(url, query_parameters)
-        response = self._client.send(request, header_parameters, stream=False, **operation_config)
-
-        if response.status_code not in [200]:
-            raise models.ErrorException(self._deserialize, response)
-
-        deserialized = None
-
-        if response.status_code == 200:
-            deserialized = self._deserialize('CardList', response)
-
-        if raw:
-            client_raw_response = ClientRawResponse(deserialized, response)
-            return client_raw_response
-
-        return deserialized
-    get_all.metadata = {'url': '/cards'}
-
     def search(
             self, q, unique=None, order=None, dir=None, include_extras=None, page=None, custom_headers=None, raw=False, **operation_config):
         """
